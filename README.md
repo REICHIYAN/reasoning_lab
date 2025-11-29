@@ -1,4 +1,4 @@
-# Reasoning Benchmark Mini-Framework
+# Reasoning-Lab
 
 This repository provides a **self-contained Colab-friendly benchmark** for comparing
 different reasoning strategies:
