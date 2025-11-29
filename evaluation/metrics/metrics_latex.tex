@@ -1,0 +1,45 @@
+% LaTeX definitions of core reasoning metrics used in the benchmark.
+% This file is intended to be copy-pasted into a NeurIPS/ICLR appendix.
+
+\paragraph{Outcome (Exact Match).}
+For a dataset $\mathcal{D} = \{(x_i, y_i)\}_{i=1}^N$ and model predictions
+$\hat{y}_i$, the Exact Match (EM) score is
+\[
+\mathrm{EM} = \frac{1}{N} \sum_{i=1}^N \mathbf{1}[\hat{y}_i = y_i].
+\]
+
+\paragraph{Process (Step Accuracy).}
+Let $s_i \in [0,1]$ denote the process-level score for example $i$,
+representing the fraction of reasoning steps judged correct by a process
+supervisor (human or LLM). The Step Accuracy is
+\[
+\mathrm{StepAcc} = \frac{1}{N} \sum_{i=1}^N s_i.
+\]
+
+\paragraph{Robustness (Self-consistency).}
+For each input $x_i$, we may sample $K$ reasoning traces and aggregate
+their correctness into a self-consistency score $c_i \in [0,1]$
+(e.g., majority-vote success rate). The dataset-level self-consistency is
+\[
+\mathrm{SC} = \frac{1}{N} \sum_{i=1}^N c_i.
+\]
+
+\paragraph{Robustness (Paraphrase Accuracy).}
+Given a set of paraphrased inputs $\tilde{x}_{i,j}$ that are semantically
+equivalent to $x_i$, we define the paraphrase accuracy $p_i \in [0,1]$ as
+the fraction of paraphrases for which the model outputs the correct answer.
+Aggregating over the dataset gives
+\[
+\mathrm{Para} = \frac{1}{N} \sum_{i=1}^N p_i.
+\]
+
+\paragraph{Efficiency (Token and Step Multipliers).}
+Let $T_m$ and $S_m$ denote the average token count and step count for model
+$m$, and let $T_{\mathrm{CoT}}$ and $S_{\mathrm{CoT}}$ be the corresponding
+quantities for the CoT baseline. We report efficiency as
+\[
+\mathrm{TokensX}(m) = \frac{T_m}{T_{\mathrm{CoT}}}, \qquad
+\mathrm{StepsX}(m)  = \frac{S_m}{S_{\mathrm{CoT}}}.
+\]
+These multipliers make it easy to compare the relative cost of each
+reasoning strategy while keeping the absolute units implementation-dependent.

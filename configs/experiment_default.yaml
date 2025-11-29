@@ -1,0 +1,18 @@
+# Default experiment configuration for the reasoning benchmark.
+
+dataset:
+  path: data/tasks/sample_tasks.jsonl
+
+models:
+  - name: CoT
+    type: cot
+  - name: CoT+SC
+    type: cot_sc
+  - name: RAG×CoT
+    type: rag_cot
+  - name: ReAct
+    type: react
+  - name: FSM
+    type: fsm
+
+random_seed: 42
